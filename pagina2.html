@@ -19,7 +19,9 @@
         <h2>{{ mensaje }}</h2>
         <br />
         <span style="font-size: 48px"> {{ contador }} </span>
-        <button type="button" @click="detenerContador" >{{ estaActivo ? 'Detener' : 'Reiniciar'}}</button>
+        <button type="button" @click="detenerContador">
+          {{ estaActivo ? 'Detener' : 'Reiniciar'}}
+        </button>
       </div>
     </div>
 
@@ -41,7 +43,7 @@
        *  - metodo data(), contendrá todos los atributos o propiedades que será datos del componente
        *  - metodo mounted(), es un metodo propio de Vue el cual una vez montado el componente
        *    realizara todas las funciones que se requiere.
-       *  - metodo methods(), es donde se declara todas las funciones que sean necesaria para la 
+       *  - metodo methods(), es donde se declara todas las funciones que sean necesaria para la
        *    interaccion con la aplicacion, a traves de los eventos.
        ***************************************************************************/
       const Componente1 = {
@@ -67,6 +69,7 @@
               clearInterval(this.interval);
               this.estaActivo = false;
             } else {
+              this.contador = 0;
               this.interval = setInterval(() => {
                 this.contador++;
               }, 1000);
