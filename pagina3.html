@@ -4,17 +4,22 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Video 3 - Binding de atributos HTML</title>
   </head>
   <body>
     <div id="app">
-      <div
-        style="
-          display: flex;
-        "
-      >
-      
-      
+      <h2 style="text-align: center">{{ mensaje }}</h2>
+      <hr />
+      <div style="display: flex; justify-content: center; width:100% ">        
+        <img width="128" height="128" v-bind:src=imagen   />
+      </div>
+      <hr />
+      <div style="display: flex; justify-content: center">
+        <button type="button" @click="mostrarImagen('html5-logo.png')" >HTML-Logo</button>
+        <button type="button" @click="mostrarImagen('CSS-Logo.png')" >CSS-Logo</button>
+        <button type="button" @click="mostrarImagen('javascript-logo.png')" >JS-Logo</button>
+        <button type="button" @click="mostrarImagen('vue-js-Logo.png')" >VUEJS-Logo</button>
+        <button type="button" @click="mostrarImagen('no-image.png')" >Default</button>
       </div>
     </div>
 
@@ -32,10 +37,11 @@
 
       /*************************************************************************
        *  El binding de propiedades o atributos a etiquetas HTML, permite dinamicamente
-       *  realizar mayor reactividad en la aplicacion de Vue.
+       *  enlazar los atributos de una etiqueta o agregar atributos personalizados en la 
+       *  aplicacion de Vue.
        *  Para ello se tiene que utilizar la directiva v-bind:<nombre_atributo>=<valor>
        *  dentro de la etiqueta HTML que deseamos agregarle el binding.
-        ***************************************************************************/
+       ***************************************************************************/
 
       /*************************************************************************
        *  Instanciacion de un componente en vuejs.
@@ -43,10 +49,16 @@
       const Componente1 = {
         data() {
           return {
-            
+            mensaje: "Selección de Imagen a través usando binding de atributos",
+            imagen: 'no-image.png'
           };
         },
 
+        methods: {
+          mostrarImagen (imagen) {
+            this.imagen = imagen;
+          }
+        },
       };
 
       /*************************************************************************

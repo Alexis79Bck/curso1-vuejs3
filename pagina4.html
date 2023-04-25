@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 4 - Enlace con v-model</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2 style="text-align: center">{{ mensaje }}</h2>
+      <hr />
+      <div
+        style="
+          display: inline-flex;
+          justify-content: center; 
+          width: 100%;
+        "
+      >
+        <label>Escriba un texto: </label>
+        <input type="text" v-model="texto" v-bind:disabled="activo" />
+        <span>
+          <input type="checkbox" v-model="activo" />
+          <label>{{ activo ? 'No Disponible' : 'Disponible'}}</label>
+        </span>
+      </div>
+
+      
+      <div style="display: flex; justify-content: center">
+        <h3>Lo que escribas aparece aqui ---> {{ texto }}</h3>
+      </div>
+       <hr />
+      <div style="display: flex; justify-content: center; width: 100%">
+        <select v-model="fruta">
+          <option value="Mango">Mango</option>
+          <option value="Papaya">Papaya</option>
+          <option value="Piña">Piña</option>
+          <option value="Guayaba">Guayaba</option>
+          <option value="Maracuyá">Maracuyá (fruta de la pasión)</option>
+          <option value="Carambola">Carambola (fruta estrella)</option>
+          <option value="Lichi">Lichi</option>
+          <option value="Granadilla">Granadilla</option>
+          <option value="Chirimoya">Chirimoya</option>
+          <option value="Pitahaya">Pitahaya (fruta del dragón)</option>
+        </select>
+      </div>
+     
+      <div style="display: flex; justify-content: center">
+        <h3>La fruta que selecciono es: {{fruta}}</h3>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      /**********************************************************************
+       * Binding de Doble Vía con v-model: Interacción del Usuario.
+       * Video 4 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=iCoJC3P0ftQ
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  Mientras el v-bind permite enlazar los atributos de una etiqueta HTML con una
+       *  propiedad o atributo del componente dinamicamente de manera unidireccional;
+       *  el v-model realiza lo mismo pero bidereccionalmente. Es decir, el valor de la
+       *  propiedad enlazada puede ser modificada interactivamente por el usuario, y asi
+       *  realizar mayor reactividad en la aplicacion de Vue.
+       *  Para ello se tiene que utilizar la directiva v-model=<nombre_propiedad_componente>
+       *  dentro de la etiqueta HTML que deseamos agregarle el modelo.
+       ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "Utilizando la directiva V-Model de VUEJS",
+            texto: "",
+            fruta: "",
+            activo: false,
+          };
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+  </body>
+</html>
