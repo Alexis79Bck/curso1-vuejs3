@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 5 - Estructura Repetitiva con v-for</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2 style="text-align: center">{{ mensaje }}</h2>
+      <hr />
+      <div style="display: flex; justify-content: center; width: 100%">
+        <select v-model="fruta">
+          <option v-for="(fruta, idx) in frutas" v-bind:value="idx">{{ fruta }}</option>
+        </select>
+      </div>
+      <div style="display: flex; justify-content: center">
+        <h3>La fruta que selecciono es: {{fruta}}</h3>
+      </div>
+      <hr />
+      <div style="display: flex; justify-content: center; width: 100%">
+        <ul>
+          <li v-for="(fruta, idx) in frutas_con_id" ::key="idx">#{{ fruta.id}} - Fruta: {{ fruta.nombre }}</li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      /**********************************************************************
+       * Estructura v-for, Recorrido de Arrays y Creación de Listas.
+       * Video 4 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=mppzB_PJR4Q
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  La directiva v-for debe ser colocado como atributo de la etiqueta que se
+       *  desea repetir por el nro. de veces que contenga la propiedad del componente
+       *  de tipo array.
+       *  Para utilizar la directiva v-for="(<variable_contenedor>, <indice>) in <array_coleccion>"
+       *  el valor de indice es opcional pero es necesario si tiene que renderizar multiples
+       *  veces el mismo componente, este se utilizaria para identificar el componente, a traves del :key. 
+       ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "Recorrido de arrays y creación de listas con v-for",
+            frutas: [
+              "Mango",
+              "Papaya",
+              "Piña",
+              "Guayaba",
+              "Maracuyá",
+              "Carambola",
+              "Lichi",
+              "Granadilla",
+              "Chirimoya",
+              "Pitahaya",
+            ],
+            fruta: "",
+            frutas_con_id: [
+              {
+                id: 1,
+                nombre: "Mango",
+              },
+              {
+                id: 2,
+                nombre: "Papaya",
+              },
+              {
+                id: 3,
+                nombre: "Piña",
+              },
+              {
+                id: 4,
+                nombre: "Guayaba",
+              },
+              {
+                id: 5,
+                nombre: "Maracuyá",
+              },
+              {
+                id: 6,
+                nombre: "Carambola",
+              },
+              {
+                id: 7,
+                nombre: "Lichi",
+              },
+              {
+                id: 8,
+                nombre: "Granadilla",
+              },
+              {
+                id: 9,
+                nombre: "Chirimoya",
+              },
+              {
+                id: 10,
+                nombre: "Pitahaya",
+              },
+            ],
+          };
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+  </body>
+</html>
