@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        style="
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        "
+      >
+        <h2>{{ mensaje }}</h2>
+        <br />
+        <span style="font-size: 48px"> {{ contador }} </span>
+        <button type="button" @click="detenerContador" >{{ estaActivo ? 'Detener' : 'Reiniciar'}}</button>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      /**********************************************************************
+       * Llamada de Métodos y Manipulación de Datos.
+       * Video 2 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=je1r0Qaz0Gs
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       *  Se declara una constante de tipo objeto, este representará todo el contexto del componente.
+       *  - metodo data(), contendrá todos los atributos o propiedades que será datos del componente
+       *  - metodo mounted(), es un metodo propio de Vue el cual una vez montado el componente
+       *    realizara todas las funciones que se requiere.
+       *  - metodo methods(), es donde se declara todas las funciones que sean necesaria para la 
+       *    interaccion con la aplicacion, a traves de los eventos.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "Este un contador automatico, que incrementa cada segundo",
+            contador: 0,
+            interval: null,
+            estaActivo: false,
+          };
+        },
+
+        mounted() {
+          this.interval = setInterval(() => {
+            this.contador++;
+          }, 1000);
+          this.estaActivo = true;
+        },
+
+        methods: {
+          detenerContador() {
+            if (this.estaActivo) {
+              clearInterval(this.interval);
+              this.estaActivo = false;
+            } else {
+              this.interval = setInterval(() => {
+                this.contador++;
+              }, 1000);
+              this.estaActivo = true;
+            }
+          },
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+  </body>
+</html>

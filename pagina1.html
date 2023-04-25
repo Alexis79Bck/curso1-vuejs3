@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primera pagina en VUEJS</title>
+  </head>
+  <body>
+    <div id="contenedor1">
+      {{ texto }} le saluda su desarrollador <span> {{ nombre }} </span>
+      <hr />
+      <p>Tengo {{ edad }} años de edad.</p>
+      <blockquote>
+        Este ejercicio de ejemplo fue creado en fecha de {{ fechaCreacion }}. 
+        La fecha actual es {{ fechaActual }}
+      </blockquote>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      /**********************************************************************
+       * Creación del primer componente básico mostrando un mensaje estático.
+       * Video 1 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=je1r0Qaz0Gs
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /************************************************************************* 
+       *  Instanciacion de un componente en vuejs.
+       *  Se declara una constante de tipo objeto, que contendrá el metodo data().
+       *  Este método retornará todos los atributos que se declare en él como propiedad
+       *  del componente que se instancia.
+       ***************************************************************************/
+      const Mensaje1 = {
+        data() {
+          return {
+            texto: "Hola Mundo !!!",
+            nombre: "Alexis Mata",
+            edad: 44,
+            fechaCreacion: "24-04-2023",
+            fechaActual: Date("d-m-Y"),
+          };
+        },
+      };
+
+      /************************************************************************* 
+       *  Renderizacion o Montaje de un componente en vuejs.
+       *  Se declara una constante de la instancia Vue (por lo general se refiere al 
+       *  componente raiz o aplicacion y por defecto se utiliza el nombre de root o app), 
+       *  el cual se utiliza método createApp(<Nombre_Instancia_del_Componente>).
+       *  En esta oportunidad se le encadena otro metodo llamado mount("#<nombre_etiqueta_contenedor>") 
+       *  para la renderizacion. Pero tambien puede ser aplicado de forma separada.
+       *  
+       *  Ejemplo: 
+       *          const app1 = Vue.createApp(Mensaje1);
+       *          app1.mount("#contenedor1");
+       ***************************************************************************/
+      const app1 = Vue.createApp(Mensaje1).mount("#contenedor1");
+    </script>
+  </body>
+</html>
