@@ -9,13 +9,13 @@
 ***********************************************************************/ 
 -->
 
-<script>
+<script setup>
 import { ref } from 'vue';
 import NotaTexto from '../Global/NotaTexto.vue';
 import TextoEncabezado from '../Global/TextoEncabezado.vue';
 
 const mensaje = ref("Selección de Imagen a través usando binding de atributos");
-const imagen = ref("../../../no-image.png");
+const imagen = ref("no-image.png");
 
 function mostrarImagen(imagenFileName) {
     imagen.value = imagenFileName
