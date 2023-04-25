@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <div
+        style="
+          display: flex;
+        "
+      >
+      
+      
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      /**********************************************************************
+       * Binding de Atributos HTML con v-bind.
+       * Video 3 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=5-SsRpGa9NM
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  El binding de propiedades o atributos a etiquetas HTML, permite dinamicamente
+       *  realizar mayor reactividad en la aplicacion de Vue.
+       *  Para ello se tiene que utilizar la directiva v-bind:<nombre_atributo>=<valor>
+       *  dentro de la etiqueta HTML que deseamos agregarle el binding.
+        ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            
+          };
+        },
+
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+  </body>
+</html>
