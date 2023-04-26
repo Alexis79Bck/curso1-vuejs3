@@ -8,9 +8,8 @@
   </head>
   <body>
     <div id="contenedor1">
-      {{ texto }} le saluda su desarrollador <span> {{ nombre }} </span>
-      <hr />
-      <p>Tengo {{ edad }} años de edad.</p>
+      <span>{{ texto }} mi nombre es  <strong>{{ nombre }}</strong>, tengo <strong>{{ edad }} años</strong> de edad y soy <strong>{{ profesion }}</strong>.</span>
+      
       <blockquote>
         Este ejercicio de ejemplo fue creado en fecha de {{ fechaCreacion }}. 
         La fecha actual es {{ fechaActual }}
@@ -41,6 +40,7 @@
             texto: "Hola Mundo !!!",
             nombre: "Alexis Mata",
             edad: 44,
+            profesion: "Desarrollador",
             fechaCreacion: "24-04-2023",
             fechaActual: Date("d-m-Y"),
           };

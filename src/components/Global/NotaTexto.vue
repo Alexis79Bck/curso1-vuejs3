@@ -1,7 +1,7 @@
 <!-- 
 /**********************************************************************
-* Componente Global NotaTexto.pagina1.html
-* Este componente presenta una nota estática al pie del componente padre
+* Componente Global NotaTexto.
+* Este componente presenta una nota estática al pie del componente.
 ***********************************************************************/ 
 -->
 

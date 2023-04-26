@@ -12,8 +12,9 @@
       <hr />
       <div style="display: flex; justify-content: center; width: 100%">
         <select v-model="fruta">
-          <option v-for="(fruta, idx) in frutas" v-bind:value="idx">{{ fruta }}</option>
+          <option v-for="(fruta, idx) in frutas" v-bind:value="fruta" ::key="idx">#{{ idx }} -{{ fruta }}</option>
         </select>
+        <!-- El idx representa el indice del elemento en el array, no confundir con el id de la lista inferior. -->
       </div>
       <div style="display: flex; justify-content: center">
         <h3>La fruta que selecciono es: {{fruta}}</h3>
@@ -21,7 +22,7 @@
       <hr />
       <div style="display: flex; justify-content: center; width: 100%">
         <ul>
-          <li v-for="(fruta, idx) in frutas_con_id" ::key="idx">#{{ fruta.id}} - Fruta: {{ fruta.nombre }}</li>
+          <li v-for="fruta in frutas_con_id" >#{{ fruta.id }} - Fruta: {{ fruta.nombre }}</li>
         </ul>
       </div>
     </div>
@@ -30,7 +31,7 @@
     <script>
       /**********************************************************************
        * Estructura v-for, Recorrido de Arrays y Creación de Listas.
-       * Video 4 del curso de VueJs 3 del canal Code Stack.
+       * Video 5 del curso de VueJs 3 del canal Code Stack.
        * Link: https://www.youtube.com/watch?v=mppzB_PJR4Q
        *
        * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de

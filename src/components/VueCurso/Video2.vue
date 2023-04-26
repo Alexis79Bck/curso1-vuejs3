@@ -54,8 +54,9 @@ onMounted(() => {
         </button>
         <hr />
         <div>
-            <NotaTexto nota="Video 2 - Si desean ver la version este ejercicio de Vue.Js con CDN" anclaSrc="pagina2.html" />
-
+            <NotaTexto nota="Video 2 - Si desean ver la version este ejercicio de Vue.Js con CDN" anclaSrc="estaticas/pagina2.html" />
+            <NotaTexto nota="Si desean ver el video del canal Code Stack"
+                anclaSrc="https://www.youtube.com/watch?v=JGN5TqaqnRg" />
         </div>
 
     </div>
