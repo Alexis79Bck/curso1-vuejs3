@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 6 - Bucles Anidados con v-for</title>
+  </head>
+  <body>
+    <div id="app">
+      <h2 style="text-align: center">{{ mensaje }}</h2>
+      <hr />
+      
+      <div style="display: flex; justify-content: center; width: 100%">
+        <ul>
+          <li v-for="fruta in frutas_con_id" >
+            #{{ fruta.id }} - Fruta: {{ fruta.nombre }}
+            <ul>
+                <li v-for="pais in fruta.origen">
+                    {{ pais.pais }}                
+                </li>
+            </ul>
+        </li>
+        </ul>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script>
+      /**********************************************************************
+       * Bucles Anidados con v-for, Obtener Índice, Bucles a Partir de Rangos.
+       * Video 6 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=5jjMnb9qcVg
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  Continuando con el video 5.
+       *  Se puede anidar bucles repetitivos manteniendo el uso de la dire v-for, 
+       *  siempre que el elemento iterable tambien sea un array u objeto. 
+       *
+       *  Para utilizar la directiva v-for="(<variable_contenedor>, <indice>) in <array_coleccion>"
+       *  el valor de indice es opcional pero es necesario si tiene que renderizar multiples
+       *  veces el mismo componente, este se utilizaria para identificar el componente, a traves del :key. 
+       ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "Bucles Anidados con v-for",
+            frutas_con_id: [
+              {
+                id: 1,
+                nombre: "Mango",
+                origen: [
+                    {
+                        id_origen: 1,
+                        pais: "Colombia"
+                    },
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },
+                    {
+                        id_origen: 3,
+                        pais: "El Salvador"
+                    },
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                ]
+              },
+              {
+                id: 2,
+                nombre: "Papaya",
+                origen: [
+                    {
+                        id_origen: 1,
+                        pais: "Colombia"
+                    },
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },
+                    {
+                        id_origen: 3,
+                        pais: "El Salvador"
+                    },
+                    {
+                        id_origen: 5,
+                        pais: "Guatemala"
+                    },
+                ]
+              },
+              {
+                id: 3,
+                nombre: "Piña",
+                origen: [ 
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },
+                    {
+                        id_origen: 3,
+                        pais: "El Salvador"
+                    },
+                    {
+                        id_origen: 6,
+                        pais: "Brasil"
+                    },
+                ]
+              },
+              {
+                id: 4,
+                nombre: "Guayaba",
+                origen: [
+                    {
+                        id_origen: 1,
+                        pais: "Colombia"
+                    },
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },                    
+                ]
+              },
+              {
+                id: 5,
+                nombre: "Maracuyá",
+                origen: [                    
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },
+                    {
+                        id_origen: 3,
+                        pais: "El Salvador"
+                    },
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                    {
+                        id_origen: 6,
+                        pais: "Brasil"
+                    },
+                ]
+              },
+              {
+                id: 6,
+                nombre: "Carambola",
+                origen: [  
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                    {
+                        id_origen: 7,
+                        pais: "Ecuador"
+                    },
+                    {
+                        id_origen: 8,
+                        pais: "Mexico"
+                    },
+                ]
+              },
+              {
+                id: 7,
+                nombre: "Lichi",
+                origen: [                    
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },
+                    {
+                        id_origen: 3,
+                        pais: "El Salvador"
+                    },
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                    {
+                        id_origen: 6,
+                        pais: "Brasil"
+                    },
+                ]
+              },
+              {
+                id: 8,
+                nombre: "Granadilla",
+                origen: [                    
+                    {
+                        id_origen: 2,
+                        pais: "Venezuela"
+                    },
+                    {
+                        id_origen: 3,
+                        pais: "El Salvador"
+                    },
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                    {
+                        id_origen: 6,
+                        pais: "Brasil"
+                    },
+                ]
+              },
+              {
+                id: 9,
+                nombre: "Chirimoya",
+                origen: [  
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                    {
+                        id_origen: 7,
+                        pais: "Ecuador"
+                    },
+                    {
+                        id_origen: 8,
+                        pais: "Mexico"
+                    },
+                ]
+              },
+              {
+                id: 10,
+                nombre: "Pitahaya",
+                origen: [  
+                    {
+                        id_origen: 4,
+                        pais: "Perú"
+                    },
+                    {
+                        id_origen: 7,
+                        pais: "Ecuador"
+                    },
+                    {
+                        id_origen: 8,
+                        pais: "Mexico"
+                    },
+                ]
+              },
+            ],
+          };
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+  </body>
+</html>

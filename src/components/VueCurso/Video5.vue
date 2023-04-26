@@ -1,6 +1,6 @@
 <!-- 
 /**********************************************************************
-* Binding de Doble Vía con v-model: Interacción del Usuario.
+* Estructura v-for, Recorrido de Arrays y Creación de Listas.
 * Video 5 del curso de VueJs 3 del canal Code Stack.
 * Link: https://www.youtube.com/watch?v=mppzB_PJR4Q
 ***********************************************************************/
