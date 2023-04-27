@@ -7,7 +7,7 @@ Mi objetivo es netamente educativo, respetando el tema y la forma como lo explic
 
 Los primeros videos del canal utiliza la libreria Vue.js como herramienta mediante la inserción del CDN, por lo tanto cada video lo tengo por separado en una página estática HTML. Le anexo una lista de enlaces para cada ejercicio realizado y el enlace del video correspondiente:
 
-## Lista de Ejercicios por las Páginas Estáticas:
+## Lista de Ejercicios en las Páginas Estáticas:
 - Ejercicio 1: [pagina1.html](/estaticas/pagina1.html) - [Video 1](https://www.youtube.com/watch?v=je1r0Qaz0Gs)
 - Ejercicio 2: [pagina2.html](/estaticas/pagina2.html) - [Video 2](https://www.youtube.com/watch?v=JGN5TqaqnRg)
 - Ejercicio 3: [pagina3.html](/estaticas/pagina3.html) - [Video 3](https://www.youtube.com/watch?v=5-SsRpGa9NM)
