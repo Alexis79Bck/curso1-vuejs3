@@ -34,9 +34,13 @@ const getUsuariosRndUser = async () => {
 onMounted(() => {
     getUsuariosJP().then(data => {
         usuariosJP.value = data;
+    }).catch(err => { 
+        console.log(err);
     });
     getUsuariosRndUser().then(data => {
         usuariosRndUser.value = data.results;
+    }).catch(err => { 
+        console.log(err);
     });
 })
 
