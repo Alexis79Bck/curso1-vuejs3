@@ -5,7 +5,7 @@ import Video3 from './components/VueCurso/Video3.vue';
 import Video4 from './components/VueCurso/Video4.vue';
 import Video5 from './components/VueCurso/Video5.vue';
 import Video6 from './components/VueCurso/Video6.vue';
-import Video7 from './components/VueCurso/Video7.vue';
+import Video7_8 from './components/VueCurso/Video7_8.vue';
 
 </script>
 
@@ -36,7 +36,7 @@ import Video7 from './components/VueCurso/Video7.vue';
   </div>
   <hr />
   <div>
-    <Video7 />
+    <Video7_8 />
   </div>
   <hr />
 </template>

@@ -4,13 +4,27 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Video 7 - Conexión a API Pública Para Datos de Prueba</title>
+    <title>Video 7 y 8 - Conexión a API Pública Para Datos de Prueba y Creacion de Tabla</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <style>
+      .table-espaciado {        
+        margin: 8px;
+        padding: 0px 8px;
+      }
+      .table-encabezado { 
+        background-color: rgb(255, 230, 230);
+      }
+      .table-sombra {
+        box-shadow: 7px 7px 12px black;
+      }
+    </style>
   </head>
   <body>
     <div id="app">
-      <h2 style="text-align: center">{{ mensaje }}</h2>
+      <h5 class="flow-text" style="text-align: center">{{ mensaje }}</h5>
 
-      <div
+      <div class="container"
         style="
           display: flex;
           flex-wrap: wrap;
@@ -19,36 +33,41 @@
           width: 100%;
         "
       >
-        <div
-          v-for="(usuario, idx) in usuariosJP"
-          :key="idx"
-          style="
-            margin: 8px;
-            padding: 0px 8px;
-            width: 500px;
-            background-color: rgb(255, 230, 230);
-            box-shadow: 7px 7px 18px black;
-          "
-        >
-          <h4>Usuario Nro. {{ usuario.id}}:</h4>
-          <ul>
-            <li>Nombre: {{ usuario.name }}</li>
-            <li>Correo: {{ usuario.email }}</li>
-            <li>Teléfono: {{ usuario.phone }}</li>
-            <li>Sitio Web: {{ usuario.website }}</li>
-          </ul>
-        </div>
-      </div>
-      <h5 style="color: blue">
-        Datos tomado del sitio
-        <a href="https://jsonplaceholder.typicode.com" target="_blank"
-          >https://jsonplaceholder.typicode.com</a
-        >
-      </h5>
-      <br />
+
+      <table class="table-espaciado table-sombra">
+        <thead class="table-encabezado">
+          <tr>
+            <th>ID</th>
+            <th>NOMBRE</th>
+            <th>CORREO</th>
+            <th>TELEFONO</th>
+            <th>SITIO WEB</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(usuario, idx) in usuariosJP" :key="idx">
+            <td>{{ usuario.id}}</td>
+            <td>{{ usuario.name}}</td>
+            <td>{{ usuario.email}}</td>
+            <td>{{ usuario.phone}}</td>
+            <td>{{ usuario.website}}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <h5 style="color: blue"> 
+                <small>Datos tomado del sitio <a href="https://jsonplaceholder.typicode.com" target="_blank">https://jsonplaceholder.typicode.com</a> </small>
+              </h5>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      
+      </div> 
       <hr />
 
-      <div
+      <div class="container"
         style="
           display: flex;
           flex-wrap: wrap;
@@ -57,8 +76,38 @@
           width: 100%;
         "
       >
+      <table class="table-espaciado table-sombra">
+        <thead class="table-encabezado">
+          <tr>
+            <th>DNI</th>
+            <th>NOMBRE</th>
+            <th>CORREO</th>
+            <th>TELEFONO</th>
+            <th>PAIS</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(usuario, idx) in usuariosRndUser" :key="idx">
+            <td>{{ usuario.id.value}}</td>
+            <td>{{ usuario.name.first }} {{ usuario.name.last }}</td>
+            <td>{{ usuario.email}}</td>
+            <td>{{ usuario.phone}}</td>
+            <td>{{ usuario.location.country }}</td>
+          </tr>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td colspan="5">
+              <h5 style="color: blue"> 
+                <small>Datos tomado del sitio <a href="https://randomuser.me/" target="_blank">https://randomuser.me/</a> </small>
+              </h5>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+
         
-        <div
+        <!-- <div
           v-for="(usuario, idx) in usuariosRndUser"
           :key="idx"
           style="
@@ -77,21 +126,25 @@
             <li>País Origen: {{ usuario.location.country }}</li>
           </ul>
         </div>
+        <h5 style="color: blue"> 
+        <small>Datos tomado del sitio <a href="https://randomuser.me/" target="_blank">https://randomuser.me/</a> </small>
+      </h5> -->
       </div>
-      <h5 style="color: blue">
-        Datos tomado del sitio
-        <a href="https://randomuser.me/" target="_blank"
-          >https://randomuser.me/</a
-        >
-      </h5>
+      
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Compiled and minified JavaScript -->
+   
     <script>
       /**********************************************************************
        * Conexión a API Pública Para Datos de Prueba.
        * Video 7 del curso de VueJs 3 del canal Code Stack.
        * Link: https://www.youtube.com/watch?v=5WsfNs_zkvg
+       * 
+       * Ejemplo de Creación de Tabla.
+       * Video 8 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=H_azyZ3RjSM       * 
        *
        * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
        * la ultima versión estable de desarrollo de VueJs 3.
@@ -122,7 +175,7 @@
         data() {
           return {
             mensaje:
-              "Conexión a API Pública Para Datos de Prueba utilizando API Fetch",
+              "Conexión a API Pública Para Datos de Prueba utilizando API Fetch y Creación de Tabla",
             usuariosJP: [],
             usuariosRndUser: [],
           };
@@ -156,5 +209,6 @@
        ***************************************************************************/
       const app = Vue.createApp(Componente1).mount("#app");
     </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   </body>
 </html>
