@@ -14,9 +14,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import NotaTexto from '../Global/NotaTexto.vue';
-import TextoEncabezado from '../Global/TextoEncabezado.vue';
-//import '../../assets/materialize/materialize.min.js'
-
+import TextoEncabezado from '../Global/TextoEncabezado.vue'; 
 
 const usuariosJP = ref([]);
 const usuariosRndUser = ref([]);

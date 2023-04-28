@@ -13,8 +13,8 @@
 import { ref } from 'vue';
 import NotaTexto from '../Global/NotaTexto.vue';
 import TextoEncabezado from '../Global/TextoEncabezado.vue';
-
-const mensaje = ref("Selección de Imagen a través usando binding de atributos");
+import Mensaje from '../Global/Mensaje.vue';
+ 
 const imagen = ref("estaticas/images/no-image.png");
 
 function mostrarImagen(imagenFileName) {
@@ -27,7 +27,7 @@ function mostrarImagen(imagenFileName) {
     <div>
         <TextoEncabezado titulo="Video 3 - Binding de atributos HTML" />
 
-        <span>{{ mensaje }}</span>
+        <Mensaje mensaje="Selección de Imagen a través usando binding de atributos." />
 
         <div style="display: flex; justify-content: center; width:100% ">
             <img width="128" height="128" v-bind:src=imagen />

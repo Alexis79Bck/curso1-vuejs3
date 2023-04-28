@@ -1,3 +1,10 @@
+<!-- 
+/**********************************************************************
+* Componente Global EncabezadoCurso.
+* Este componente muestra una breve descripcion de lo relacionado 
+* al Curso Vue 3.
+***********************************************************************/ 
+-->
 <template>
     <div class="blue lighten-5 z-depth-3 espaciado">
 
@@ -17,7 +24,6 @@
 
 <style scoped>
 @import url('../../assets/materialize/materialize.min.css');
-
 .espaciado {
     padding: 5px;
 }

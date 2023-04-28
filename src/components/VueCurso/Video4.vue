@@ -10,8 +10,8 @@
 import { ref } from 'vue';
 import NotaTexto from '../Global/NotaTexto.vue';
 import TextoEncabezado from '../Global/TextoEncabezado.vue';
+import Mensaje from '../Global/Mensaje.vue';
 
-const mensaje = ref("Utilizando la directiva V-Model");
 const texto = ref("");
 const fruta = ref("");
 const activo = ref(false);
@@ -22,7 +22,7 @@ const activo = ref(false);
     <div class="container">
         <TextoEncabezado titulo="Video 4 - Enlace con v-model" />
 
-        <span>{{ mensaje }}</span>
+        <Mensaje mensaje="Utilizando la directiva V-Model" />
 
         <div >
             <label>Escriba un texto: </label>

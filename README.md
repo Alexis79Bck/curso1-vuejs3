@@ -17,4 +17,9 @@ Los primeros videos del canal utiliza la libreria Vue.js como herramienta median
 - Ejercicio 7 y 8: [pagina7_8.html](/estaticas/pagina7_8.html) - [Video 7](https://www.youtube.com/watch?v=je1r0Qaz0Gs) y [Video 8](https://www.youtube.com/watch?v=je1r0Qaz0Gs)
 
 
+---
+Cada ejecicio de las Páginas Estaticas, se adaptó en su forma de componente mediante el Composite API de la versión actual de Vue.
+
+Cada componente se encuentran dentro de `src/components/VueCurso`, claramente identificado. 
+
 

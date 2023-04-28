@@ -10,6 +10,8 @@
 import { ref } from 'vue';
 import NotaTexto from '../Global/NotaTexto.vue';
 import TextoEncabezado from '../Global/TextoEncabezado.vue';
+import Mensaje from '../Global/Mensaje.vue';
+
 
 /**
  * Se pudiera crear una variable array de Frutas para listar los elementos frutas
@@ -78,7 +80,7 @@ import TextoEncabezado from '../Global/TextoEncabezado.vue';
               },
             ];
 */
-const mensaje = ref("Recorrido de arrays y creación de listas con v-for");
+ 
 const fruta = ref("");
 
 // otra forma de escribir este codigo es: 
@@ -146,7 +148,7 @@ const frutas_con_id = ref([
     <div>
         <TextoEncabezado titulo="Video 5 - Estructura Repetitiva con v-for" />
 
-        <span>{{ mensaje }}</span>
+        <Mensaje mensaje="Recorrido de arrays y creación de listas con v-for" />
 
         <div class="container">
             <div>
@@ -159,8 +161,12 @@ const frutas_con_id = ref([
             </div>
         </div>
             <div>
-                <ul class="collection">
-                    <li class="collection-item" v-for="fruta in frutas_con_id" >#{{ fruta.id }} - Fruta: {{ fruta.nombre }}</li>
+                <ul class="sin-vineta">
+                    <li  v-for="fruta2 in frutas_con_id" >
+                       <span :class="{frutaSeleccionada: fruta2.nombre === fruta}">
+                        #{{ fruta2.id }} - Fruta: {{ fruta2.nombre }}
+                      </span>
+                    </li>
                 </ul>
             </div>
         
@@ -172,5 +178,20 @@ const frutas_con_id = ref([
     </div>
 </template>
 
+<style scoped>
+  .sin-vineta {
+    list-style-type: none;
+  }
 
+  .frutaSeleccionada {
+    color: brown;
+    padding: 2px;
+    font-size: large;
+    font-weight: 600;
+    border: 2px solid blue;
+    border-radius: 7px;
+    background-color: lightgoldenrodyellow;
+  }
+     
+</style>
 

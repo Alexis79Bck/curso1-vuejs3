@@ -13,9 +13,8 @@
 import { ref, onMounted } from 'vue';
 import TextoEncabezado from '../Global/TextoEncabezado.vue';
 import NotaTexto from '../Global/NotaTexto.vue';
+import Mensaje from '../Global/Mensaje.vue'
 
-
-const mensaje = ref("Este un contador automatico, que incrementa cada segundo");
 const contador = ref(0);
 const interval = ref(null);
 const estaActivo = ref(false);
@@ -45,8 +44,8 @@ onMounted(() => {
 <template>
     <div>
         <TextoEncabezado titulo="Video 2 - Llamada de Métodos y Manipulación de Datos" />
-
-        <span>{{ mensaje }}</span>
+        
+        <Mensaje mensaje="Este un contador automatico, que incrementa cada segundo" />
         <br />
         <span style="font-size: 36px"> {{ contador }} </span> -
         <button type="button" @click="detenerContador">
