@@ -27,7 +27,7 @@ function mostrarImagen(imagenFileName) {
     <div>
         <TextoEncabezado titulo="Video 3 - Binding de atributos HTML" />
 
-        <h2 style="text-align: center">{{ mensaje }}</h2>
+        <span>{{ mensaje }}</span>
 
         <div style="display: flex; justify-content: center; width:100% ">
             <img width="128" height="128" v-bind:src=imagen />

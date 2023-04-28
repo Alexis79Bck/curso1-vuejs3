@@ -146,11 +146,11 @@ const frutas_con_id = ref([
     <div>
         <TextoEncabezado titulo="Video 5 - Estructura Repetitiva con v-for" />
 
-        <h2 style="text-align: center">{{ mensaje }}</h2>
+        <span>{{ mensaje }}</span>
 
-        <div style="display: flex; flex-direction: column; justify-content: center">
+        <div class="container">
             <div>
-                <select v-model="fruta">
+                <select class="browser-default" v-model="fruta">
                     <option v-for="(fruta, idx) in frutas" v-bind:value="fruta" ::key="idx">#{{ idx }} -{{ fruta }}</option>
                 </select>
                 : <span><strong>La fruta que selecciono es: {{ fruta }}</strong></span>
@@ -158,9 +158,9 @@ const frutas_con_id = ref([
                 <!-- El idx representa el indice del elemento en el array, no confundir con el id de la lista inferior. -->
             </div>
         </div>
-            <div style="display: flex; justify-content: center">
-                <ul>
-                    <li v-for="fruta in frutas_con_id" >#{{ fruta.id }} - Fruta: {{ fruta.nombre }}</li>
+            <div>
+                <ul class="collection">
+                    <li class="collection-item" v-for="fruta in frutas_con_id" >#{{ fruta.id }} - Fruta: {{ fruta.nombre }}</li>
                 </ul>
             </div>
         

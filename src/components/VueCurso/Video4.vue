@@ -19,27 +19,25 @@ const activo = ref(false);
 </script>
 
 <template>
-    <div>
+    <div class="container">
         <TextoEncabezado titulo="Video 4 - Enlace con v-model" />
 
-        <h2 style="text-align: center">{{ mensaje }}</h2>
+        <span>{{ mensaje }}</span>
 
-        <div style="display: inline-flex; justify-content: center; width: 100%;">
+        <div >
             <label>Escriba un texto: </label>
             <input type="text" v-model="texto" v-bind:disabled="activo" />
             <span>
-                <input type="checkbox" v-model="activo" />
+                <input type="checkbox" class="filled-in" v-model="activo" />
                 <label>{{ activo ? 'No Disponible' : 'Disponible' }}</label>
             </span>
         </div>
-
-
-        <div style="display: flex; justify-content: center">
-            <h3>Lo que escribas aparece aqui ---> {{ texto }}</h3>
+        <div >
+            <span>Lo que escribas aparece aqui ---> {{ texto }}</span>
         </div>
         <hr />
-        <div style="display: flex; justify-content: center; width: 100%">
-            <select v-model="fruta">
+        <div >
+            <select class="browser-default" v-model="fruta">
                 <option value="Mango">Mango</option>
                 <option value="Papaya">Papaya</option>
                 <option value="Piña">Piña</option>
@@ -53,8 +51,8 @@ const activo = ref(false);
             </select>
         </div>
 
-        <div style="display: flex; justify-content: center">
-            <h3>La fruta que selecciono es: {{ fruta }}</h3>
+        <div>
+            <span>La fruta que selecciono es: {{ fruta }}</span>
         </div>
 
         <hr />

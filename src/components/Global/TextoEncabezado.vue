@@ -7,7 +7,7 @@
 -->
 <template>
     <div>
-        <h3 style="color: brown;">{{ titulo }} </h3>
+        <h5 style="color: brown;">{{ titulo }} </h5>
     </div>
 </template>
 

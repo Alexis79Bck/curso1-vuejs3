@@ -46,7 +46,7 @@ onMounted(() => {
     <div>
         <TextoEncabezado titulo="Video 2 - Llamada de Métodos y Manipulación de Datos" />
 
-        <h2>{{ mensaje }}</h2>
+        <span>{{ mensaje }}</span>
         <br />
         <span style="font-size: 36px"> {{ contador }} </span> -
         <button type="button" @click="detenerContador">

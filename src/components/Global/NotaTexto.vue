@@ -8,7 +8,7 @@
 <template>
     <div>
         <small>
-            {{ nota }}, haga click <a v-bind:href="anclaSrc" target="_blank">AQUI</a>
+           <h6> {{ nota }}, haga click <a v-bind:href="anclaSrc" target="_blank">AQUI</a></h6>
         </small>
     </div>
 </template>
