@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 9 - Renderizado condicional de componentes</title>
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    
+  </head>
+  <body>
+    <div id="app">
+      <h5>{{ mensaje }}</h5>
+
+      <div class="container"
+        style="
+          display: flex;
+          flex-wrap: wrap;
+          flex-grow: 1;
+          justify-content: center;
+          width: 100%;
+        "
+      >
+      
+      </div> 
+      <hr />
+      
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Compiled and minified JavaScript -->
+   
+    <script>
+      /**********************************************************************
+       * Renderizado Condicional con v-if, v-else y v-else-if.
+       * Video 9 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=4OSZ2AdX9x4
+       * 
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  Por lo general, vue 3 es una libreria para la creacion de interfaces de usuario por la
+       *  utilizacion de componentes, muchas veces los datos deben ser obtenidos desde una base
+       *  de datos  mediante un enlace de comunicacion. Por ejemplo fetch API para consumo de
+       *  una API. Esta API devolverá una coleccion de datos en Formato JSON y el cual
+       *  vue puede poder trabajarlo libremente.
+       *
+       *  El fetch API, ofrece una definición genérica de los objetos Request y Response
+       *  (y otras cosas relacionadas con las solicitudes de red). Esto permitirá su uso donde
+       *  sea necesario en un futuro, ya sea para operadores de servicios, API caché y otras cosas
+       *  similares que manipulen o modifiquen las solicitudes y respuestas, o cualquier otro tipo de
+       *  caso de uso que pudiera requerirle la generación de sus propias respuestas mediante programación.
+       *
+       *  También proporciona una definición para conceptos relacionados, como CORS y la semántica de encabezado HTTP origen,
+       *  suplantando sus definiciones separadas en otros lugares.
+       ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje:
+              "Renderizado Condicional usando v-if, v-else y v-else-if",
+            
+          };
+        },
+
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>
