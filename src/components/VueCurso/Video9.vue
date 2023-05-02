@@ -1,3 +1,10 @@
+<!-- 
+/**********************************************************************
+* Renderizacion condicional con v-if, v-else, v-else-if.
+* Video 9 del curso de VueJs 3 del canal Code Stack.
+* Link: https://www.youtube.com/watch?v=4OSZ2AdX9x4
+***********************************************************************/
+-->
 <template>
     <div >
         <TextoEncabezado titulo="Video 9 - Renderizado condicional de componentes" />

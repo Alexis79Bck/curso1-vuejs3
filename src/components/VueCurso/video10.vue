@@ -1,8 +1,13 @@
+<!-- 
+/**********************************************************************
+* Manejo de eventos.
+* Video 10 del curso de VueJs 3 del canal Code Stack.
+* Link: https://www.youtube.com/watch?v=MECrKp8B-7U
+***********************************************************************/
+-->
 <template>
     <div>
         <TextoEncabezado titulo="Video 10 - Manejo de Eventos" />
-
-
 
         <div class="box sombra-box">
             <p class="subtitle is-3"><u>EJEMPLO BÁSICO - EVENTO CLICK (onClick)</u></p>

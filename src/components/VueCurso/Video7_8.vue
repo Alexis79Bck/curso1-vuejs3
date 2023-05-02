@@ -4,7 +4,6 @@
 * Video 7 del curso de VueJs 3 del canal Code Stack.
 * Link: https://www.youtube.com/watch?v=5WsfNs_zkvg
 
-* Conexión a API Pública Para Datos de Prueba.
 * Video 8 del curso de VueJs 3 del canal Code Stack.
 * Link: https://www.youtube.com/watch?v=H_azyZ3RjSM
 
@@ -82,22 +81,7 @@ onMounted(() => {
                         </td>
                     </tr>
                 </tfoot>
-            </table>
-            <!-- <div v-for="(usuario, idx) in usuariosJP" :key="idx" style="
-                        margin: 8px;
-                        padding: 0px 8px;
-                        width: 500px;
-                        background-color: rgb(255, 230, 230);
-                        box-shadow: 7px 7px 18px black;
-                      ">
-                        <h4>Usuario Nro. {{ usuario.id }}:</h4>
-                        <ul>
-                            <li>Nombre: {{ usuario.name }}</li>
-                            <li>Correo: {{ usuario.email }}</li>
-                            <li>Teléfono: {{ usuario.phone }}</li>
-                            <li>Sitio Web: {{ usuario.website }}</li>
-                        </ul>
-                    </div> -->
+            </table> 
         </div>
 
         <hr />

@@ -119,11 +119,7 @@ function seleccionar(nombre) {
     <hr />
 
     <div>
-    
       <component :is='componenteSeleccionado' />
-
-   
-
     </div>
   </div>
 </template>
