@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 10 - Manejo de Eventos</title>
+    <!-- BulmaCSS: Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      .sombra-box {
+        border: solid 1px black;
+        box-shadow: 7px 7px 12px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container has-text-centered">
+      <div class="title is-2">{{ mensaje }}</div>
+
+      <div class="box sombra-box">
+        <p class="subtitle is-3"><u>EJEMPLO BÁSICO - EVENTO CLICK (onClick)</u></p>
+        <div class="block">
+          <button class="button is-info" type="button" v-on:click="contador++">
+            Click me!
+          </button>
+        </div>
+        <div class="is-size-3">{{ contador }}</div>
+      </div>
+
+      <div class="box sombra-box">
+        <p class="subtitle is-3"><u>EJEMPLO BÁSICO - EVENTO MOUSEOVER (onMouseover)</u></p>
+
+        <button
+          class="button is-info"
+          type="button"
+          @mouseover="estadoVue = !estadoVue"
+        >
+          {{ estadoVue ? 'Ocultar Logo Vue' : 'Mostrar Logo Vue'}}
+        </button>
+        <div class="block is-flex is-justify-content-center">
+          <div class="card" v-if="estadoVue">
+            <div class="card-image">
+              <img src="images/vue-js-logo.png" alt="" />
+            </div>
+          </div>
+        </div>
+
+        <button
+          class="button is-success"
+          type="button"
+          @mouseover="estadoJs = !estadoJs"
+        >
+          {{ estadoJs ? 'Ocultar Logo JavaScript' : 'Mostrar Logo Javascript'}}
+        </button>
+
+        <div class="block is-flex is-justify-content-center">
+          <div class="card" v-if="estadoJs">
+            <div class="card-image">
+              <img src="images/javascript-logo.png" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box sombra-box">
+        <p class="subtitle is-3"><u>EJEMPLO BÁSICO - EVENTO CHANGE (onChange)</u></p>
+
+        <div class="control">
+          <label class="radio">
+            <input type="radio" name="SeleccionImangen" @change="cambiarImagen('vue-js-logo.png')"/>
+            Vue Logo
+          </label>
+          <label class="radio">
+            <input type="radio" name="SeleccionImangen" @change="cambiarImagen('html5-logo.png')"/>
+            HTML5 Logo
+          </label>
+          <label class="radio">
+            <input type="radio" name="SeleccionImangen" @change="cambiarImagen('CSS-logo.png')"/>
+            CSS Logo
+          </label>
+          <label class="radio">
+            <input type="radio" name="SeleccionImangen" @change="cambiarImagen('javascript-logo.png')"/>
+            JavaScript Logo
+          </label>
+          <label class="radio">
+            <input type="radio" name="SeleccionImangen" @change="cambiarImagen('no-image.png')"/>
+            Sin Imagen
+          </label>
+        </div>
+         
+        <div class="block is-flex is-justify-content-center">
+          <div class="card" >
+            <div class="card-image">
+              <img :src="imagen" width="128" height="128" />
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Compiled and minified JavaScript -->
+
+    <script>
+      /**********************************************************************
+       * Manejo de Eventos.
+       * Video 10 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=MECrKp8B-7U
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       * Los eventos en Javascripts, son las acciones que realiza el usuario para interactuar
+       * con la aplicación, como por ejemplos Click, Focus, Blur, MouseOver, MouseIn, MouseOut, etc
+       *
+       * la directiva utilizada para capturar los eventos es v-on:<nombre_evento>, tambien puede
+       * escribirse @<nombre_evento>.
+       * 
+       * Esta es la forma que este framework puede trabajar con la interaccion del usuario con
+       * la aplicacion. Asi como, a su manera, tambien lo trabaja los demas como React, Angular, Svelte.
+       ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "Manejo de Eventos",
+            contador: 0,
+            estadoVue: false,
+            estadoJs: false,
+            imagen: "images/no-image.png"
+          };
+        },
+
+        methods: {
+            cambiarImagen (imagen) {
+                this.imagen = "images/" + imagen; 
+            }
+        },
+
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

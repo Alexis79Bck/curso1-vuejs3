@@ -12,6 +12,8 @@ import Video5 from './components/VueCurso/Video5.vue';
 import Video6 from './components/VueCurso/Video6.vue';
 import Video7_8 from './components/VueCurso/Video7_8.vue';
 import BotonSeleccion from './components/Global/BotonSeleccion.vue';
+import Video9 from './components/VueCurso/Video9.vue';
+import Video10 from './components/VueCurso/video10.vue';
 
 /**
  * Inicialización de variable:
@@ -26,7 +28,10 @@ const botones = ref([
   { nombre: 'video4', etiqueta: 'Video 4' },
   { nombre: 'video5', etiqueta: 'Video 5' },
   { nombre: 'video6', etiqueta: 'Video 6' },
-  { nombre: 'video7_8', etiqueta: 'Video 7 y 8' }
+  { nombre: 'video7_8', etiqueta: 'Video 7 y 8' },
+  { nombre: 'video9', etiqueta: 'Video 9' },
+  { nombre: 'video10', etiqueta: 'Video 10' },
+
 ]);
 
 /**
@@ -52,6 +57,10 @@ const componenteSeleccionado = computed(() => {
       return Video6;
     case 'video7_8':
       return Video7_8;
+    case 'video9':
+      return Video9;
+    case 'video10':
+      return Video10;
     default:
       return null;
   }
@@ -68,19 +77,7 @@ function seleccionar(nombre) {
 
 </script>
 
-<template>
-  <div>
-    <EncabezadoCurso />
-    <hr />
-    <div class="container">
-      <BotonSeleccion v-for="(boton, idx) in botones" :key="idx" @click="seleccionar(boton.nombre)">
-        {{ boton.etiqueta }}
-      </BotonSeleccion>
-    </div>
-    <hr />
-
-    <div>
-      <!-- 
+  <!-- 
       ** Vue nos permite tener esta etiqueta dinámica para mostrar diferentes componentes segun la interacción
       ** del usuario, de una manera mas simple y clara.
       **
@@ -95,9 +92,7 @@ function seleccionar(nombre) {
       **        Ejemplo:  <component :is='componenteSeleccionado' /> componenteSeleccionado es una propiedad computada
 
     -->
-      <component :is='componenteSeleccionado' />
-
-      <!-- 
+   <!-- 
       ** Aun cuando escribimos codigo puede ser que sea semantico e independiente, escribirlo como se ve abajo
       ** no es la forma correcta, aun cuando el resultado es el mismo.
       **
@@ -112,6 +107,22 @@ function seleccionar(nombre) {
           <Video6 v-if="componente == 'video6'" />
           <Video7_8 v-if="componente == 'video7_8'" /> 
     -->
+<template>
+  <div>
+    <EncabezadoCurso />
+    <hr />
+    <div class="container">
+      <BotonSeleccion v-for="(boton, idx) in botones" :key="idx" @click="seleccionar(boton.nombre)">
+        {{ boton.etiqueta }}
+      </BotonSeleccion>
+    </div>
+    <hr />
+
+    <div>
+    
+      <component :is='componenteSeleccionado' />
+
+   
 
     </div>
   </div>

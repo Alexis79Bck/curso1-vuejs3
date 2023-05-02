@@ -15,6 +15,8 @@ Los primeros videos del canal utiliza la libreria Vue.js como herramienta median
 - Ejercicio 5: [pagina5.html](/estaticas/pagina5.html) - [Video 5](https://www.youtube.com/watch?v=mppzB_PJR4Q)
 - Ejercicio 6: [pagina6.html](/estaticas/pagina6.html) - [Video 6](https://www.youtube.com/watch?v=5jjMnb9qcVg)
 - Ejercicio 7 y 8: [pagina7_8.html](/estaticas/pagina7_8.html) - [Video 7](https://www.youtube.com/watch?v=je1r0Qaz0Gs) y [Video 8](https://www.youtube.com/watch?v=je1r0Qaz0Gs)
+- Ejercicio 9: [pagina9.html](/estaticas/pagina9.html) - [Video 9](https://www.youtube.com/watch?v=4OSZ2AdX9x4)
+- Ejercicio 10: [pagina10.html](/estaticas/pagina10.html) - [Video 10](https://www.youtube.com/watch?v=MECrKp8B-7U)
 
 
 ---

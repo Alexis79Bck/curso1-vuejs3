@@ -10,21 +10,27 @@
     
   </head>
   <body>
-    <div id="app">
+    <div id="app" class="container">
       <h5>{{ mensaje }}</h5>
 
-      <div class="container"
-        style="
-          display: flex;
-          flex-wrap: wrap;
-          flex-grow: 1;
-          justify-content: center;
-          width: 100%;
-        "
-      >
-      
+      <div >
+        <h3><u>EJEMPLO BÁSICO</u></h3>
+        <h5 v-if="numero_uno < numero_dos">El nro. {{ numero_uno}} es menor que {{ numero_dos }} </h5>
+        <h5 v-else-if="numero_uno == numero_dos">El nro. {{ numero_uno}} es igual a {{ numero_dos }} </h5>
+        <h5 v-else="numero_uno > numero_dos">El nro. {{ numero_uno}} es mayor que {{ numero_dos }} </h5>
       </div> 
       <hr />
+      <div >
+        <h3><u>EJEMPLO BÁSICO CON V-FOR (POSTS CON ID PARES)</u></h3>
+        <ul class="collection">
+          <li class="collection-item" v-for="post in posts"> 
+            <span v-if="post.id % 2 == 0">El ID es par. - </span>
+            <span v-else>El ID es impar. - </span>
+            {{post.id}} - {{post.title}}
+          </li>
+        </ul>
+         
+      </div> 
       
     </div>
 
@@ -43,20 +49,12 @@
        ***********************************************************************/
 
       /*************************************************************************
-       *  Por lo general, vue 3 es una libreria para la creacion de interfaces de usuario por la
-       *  utilizacion de componentes, muchas veces los datos deben ser obtenidos desde una base
-       *  de datos  mediante un enlace de comunicacion. Por ejemplo fetch API para consumo de
-       *  una API. Esta API devolverá una coleccion de datos en Formato JSON y el cual
-       *  vue puede poder trabajarlo libremente.
-       *
-       *  El fetch API, ofrece una definición genérica de los objetos Request y Response
-       *  (y otras cosas relacionadas con las solicitudes de red). Esto permitirá su uso donde
-       *  sea necesario en un futuro, ya sea para operadores de servicios, API caché y otras cosas
-       *  similares que manipulen o modifiquen las solicitudes y respuestas, o cualquier otro tipo de
-       *  caso de uso que pudiera requerirle la generación de sus propias respuestas mediante programación.
-       *
-       *  También proporciona una definición para conceptos relacionados, como CORS y la semántica de encabezado HTTP origen,
-       *  suplantando sus definiciones separadas en otros lugares.
+       * las directivas v-if, v-else y v-else-if nos permite realizar condicionales para
+       * poder renderizar un elemento dependiendo del resultado de la condicion.
+       * 
+       * Las directivas v-for y v-if no pueden ser utilizadas detro de una misma etiqueta 
+       * ya que en la priorización v-for está por encima del v-if, pero puede anidarse
+       * dentro de ellas, como en el EJEMPLO BÁSICO CON V-FOR.
        ***************************************************************************/
 
       /*************************************************************************
@@ -67,8 +65,24 @@
           return {
             mensaje:
               "Renderizado Condicional usando v-if, v-else y v-else-if",
-            
+            numero_uno: 11,
+            numero_dos: 9,
+            posts: []
           };
+        },
+
+        methods: {
+          getPosts() {
+            fetch("https://jsonplaceholder.typicode.com/posts")
+              .then((response) => response.json())
+              .then((data) => {
+                this.posts = data;
+              });
+          }
+        },
+
+        mounted() {
+          this.getPosts();
         },
 
       };
