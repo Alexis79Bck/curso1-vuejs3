@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>
+      Video 11 - Renderizado condicional de componentes | v-show vs. v-if
+    </title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      .sombra-box {
+        border: solid 1px black;
+        box-shadow: 7px 7px 12px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container has-text-centered">
+      <div class="title is-2">{{ mensaje }}</div>
+
+      <div class="box sombra-box">
+        <div class="columns is-flex is-justify-content-center">
+          <div class="column is-2">
+                    <label>Numero 1: </label>
+                    <input
+                      class="input"
+                      v-model.number="numero_uno"
+                      type="number"
+                      step="1"
+                    />
+          </div>
+          <div class="column is-2">
+            <label>Numero 2: </label>
+                    <input
+                      class="input"
+                      v-model.number="numero_dos"
+                      type="number"
+                      step="1"
+                    />
+          </div>
+        </div>
+   
+
+        <p class="subtitle is-3" v-show="numero_uno < numero_dos">
+          El nro. {{ numero_uno}} es menor que {{ numero_dos }} (Usando V-Show)
+        </p>
+        <p class="subtitle is-3" v-if="numero_uno > numero_dos">
+          El nro. {{ numero_uno}} es mayor que {{ numero_dos }} (usando V-If)
+        </p>
+      </div>
+      <hr />
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Compiled and minified JavaScript -->
+
+    <script>
+      /**********************************************************************
+       * Renderizado Condicional con v-show y diferencia entre v-if.
+       * Video 11 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=QEIr2gz3df0
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       * la directiva v-show permite controlar la visibilidad del elemento ene el DOM
+       * segun su valor booleano, es decir, Si la expresión proporcionada a v-show
+       * es verdadera, el elemento se muestra en el DOM con display: block.
+       * Si es falsa, el elemento se oculta en el DOM con display: none.
+       *
+       * En cambio el v-if, v-else y v-else-if se utiliza para controlar la presencia
+       * del elemento en el DOM.
+       * Si la expresión proporcionada a v-if es verdadera, el elemento se renderiza en el DOM.
+       * Si es falsa, el elemento se elimina del DOM.
+       *
+       * la elección entre v-if y v-show depende de la situación específica.
+       * v-show es útil cuando se espera que el elemento se muestre y se oculte repetidamente,
+       * mientras que v-if es útil cuando la presencia del elemento en el DOM es infrecuente o
+       * depende de una condición costosa de evaluar.
+       * En términos de rendimiento, v-show es ligeramente más lento que v-if cuando se trata
+       * de elementos complejos, ya que el elemento siempre está presente en el DOM.
+       ***************************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "Renderizado Condicional usando v-show vs. v-if",
+            numero_uno: 1,
+            numero_dos: 9,
+          };
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

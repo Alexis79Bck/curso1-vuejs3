@@ -27,7 +27,7 @@ function mostrarImagen(imagenFileName) {
     <div>
         <TextoEncabezado titulo="Video 3 - Binding de atributos HTML" />
 
-        <Mensaje mensaje="Selección de Imagen a través usando binding de atributos." />
+        <Mensaje mensaje="Selección de Imagen." />
 
         <div style="display: flex; justify-content: center; width:100% ">
             <img width="128" height="128" v-bind:src=imagen />

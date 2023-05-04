@@ -14,6 +14,8 @@ import Video7_8 from './components/VueCurso/Video7_8.vue';
 import BotonSeleccion from './components/Global/BotonSeleccion.vue';
 import Video9 from './components/VueCurso/Video9.vue';
 import Video10 from './components/VueCurso/video10.vue';
+import Video11 from './components/VueCurso/Video11.vue';
+import Video12_13 from './components/VueCurso/Video12_13.vue';
 
 /**
  * Inicialización de variable:
@@ -22,15 +24,17 @@ import Video10 from './components/VueCurso/video10.vue';
  */
 const componente = ref(null);
 const botones = ref([
-  { nombre: 'video1', etiqueta: 'Video 1' },
-  { nombre: 'video2', etiqueta: 'Video 2' },
-  { nombre: 'video3', etiqueta: 'Video 3' },
-  { nombre: 'video4', etiqueta: 'Video 4' },
-  { nombre: 'video5', etiqueta: 'Video 5' },
-  { nombre: 'video6', etiqueta: 'Video 6' },
-  { nombre: 'video7_8', etiqueta: 'Video 7 y 8' },
-  { nombre: 'video9', etiqueta: 'Video 9' },
-  { nombre: 'video10', etiqueta: 'Video 10' },
+  { nombre: 'video1', etiqueta: 'Ejercicio 1' },
+  { nombre: 'video2', etiqueta: 'Ejercicio 2' },
+  { nombre: 'video3', etiqueta: 'Ejercicio 3' },
+  { nombre: 'video4', etiqueta: 'Ejercicio 4' },
+  { nombre: 'video5', etiqueta: 'Ejercicio 5' },
+  { nombre: 'video6', etiqueta: 'Ejercicio 6' },
+  { nombre: 'video7_8', etiqueta: 'Ejercicios 7 y 8' },
+  { nombre: 'video9', etiqueta: 'Ejercicio 9' },
+  { nombre: 'video10', etiqueta: 'Ejercicio 10' },
+  { nombre: 'video11', etiqueta: 'Ejercicio 11' },
+  { nombre: 'video12_13', etiqueta: 'Ejercicios 12 y 13' },
 
 ]);
 
@@ -61,6 +65,10 @@ const componenteSeleccionado = computed(() => {
       return Video9;
     case 'video10':
       return Video10;
+    case 'video11':
+      return Video11;
+    case 'video12_13':
+      return Video12_13;
     default:
       return null;
   }
@@ -112,9 +120,14 @@ function seleccionar(nombre) {
     <EncabezadoCurso />
     <hr />
     <div class="container">
-      <BotonSeleccion v-for="(boton, idx) in botones" :key="idx" @click="seleccionar(boton.nombre)">
-        {{ boton.etiqueta }}
-      </BotonSeleccion>
+      <div class="row ">
+        <div class="col s4 m3 l3" v-for="(boton, idx) in botones" :key="idx" >
+          <BotonSeleccion  @click="seleccionar(boton.nombre)">
+            {{ boton.etiqueta }}
+          </BotonSeleccion>
+        </div>
+      </div>
+
     </div>
     <hr />
 
@@ -124,3 +137,7 @@ function seleccionar(nombre) {
   </div>
 </template>
 
+<style scoped>
+@import url('assets/materialize/materialize.min.css');
+
+</style>
