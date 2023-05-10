@@ -9,7 +9,7 @@
     <div>
         <TextoEncabezado titulo="Video 10 - Manejo de Eventos" />
 
-        <div class="columns">
+        <div class="mt-4 columns">
 
             <div class="column is-4">
                 <div class="box sombra-box">

@@ -13,9 +13,10 @@ import Video6 from './components/VueCurso/Video6.vue';
 import Video7_8 from './components/VueCurso/Video7_8.vue';
 import BotonSeleccion from './components/Global/BotonSeleccion.vue';
 import Video9 from './components/VueCurso/Video9.vue';
-import Video10 from './components/VueCurso/video10.vue';
+import Video10 from './components/VueCurso/Video10.vue';
 import Video11 from './components/VueCurso/Video11.vue';
 import Video12_13 from './components/VueCurso/Video12_13.vue';
+import Video15 from './components/VueCurso/Video15.vue';
 
 /**
  * Inicialización de variable:
@@ -35,6 +36,7 @@ const botones = ref([
   { nombre: 'video10', etiqueta: 'Ejercicio 10' },
   { nombre: 'video11', etiqueta: 'Ejercicio 11' },
   { nombre: 'video12_13', etiqueta: 'Ejercicios 12 y 13' },
+  { nombre: 'video15', etiqueta: 'Ejercicio 15' },
 
 ]);
 
@@ -69,6 +71,8 @@ const componenteSeleccionado = computed(() => {
       return Video11;
     case 'video12_13':
       return Video12_13;
+    case 'video15':
+      return Video15;
     default:
       return null;
   }
