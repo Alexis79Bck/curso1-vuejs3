@@ -24,19 +24,19 @@
                 </div>
             </div>
 
-            <p class="subtitle is-3">
+            <p class="subtitle is-5">
                 La suma de los numeros es : {{ numero_a }} + {{ numero_b }} = {{
                     resultadoSuma }}
             </p>
-            <p class="subtitle is-3">
+            <p class="subtitle is-5">
                 El producto de los numeros es : {{ numero_a }} * {{ numero_b }} = {{
                     resultadoProducto }}
             </p>
-            <p class="subtitle is-3">
+            <p class="subtitle is-5">
                 La división de la suma entre el producto es : {{ resultadoSuma }} / {{
                     resultadoProducto }} = {{ resultadoDivision }}
             </p>
-            <p class="subtitle is-3">
+            <p class="subtitle is-5">
                 La división del producto entre la suma es {{ resultadoProducto }} / {{
                     resultadoSuma }} = {{ resultadoDivision2 }}
             </p>
@@ -47,25 +47,25 @@
                 <div class="column is-3">
                     <div class="field has-addons">
                         <div class="control">
-                            <input class="input is-primary" v-model="fruta" type="text" placeholder="Ingresa una fruta:" />
+                            <input class="input is-primary" v-model="elemento" type="text" placeholder="Ingresa un texto:" />
                         </div>
                         <div class="control">
-                            <button class="button is-link" @click="addFruta">Añadir</button>
+                            <button class="button is-link" @click="addElemento">Añadir</button>
                         </div>
                     </div>
                 </div>
                 <div class="column is-3">
                     <div class="content">
-                        <p class="subtitle is-3">Listado de Frutas:</p>
-                        <div v-if="frutas.length > 0" class="block is-small message is-link">
-                            <div v-for="(fruta, idx) in frutas" class="message-body">
+                        <p class="subtitle is-5">Listado de Elementos:</p>
+                        <div v-if="elementos.length > 0" class="block is-small message is-link">
+                            <div v-for="(elemento, idx) in elementos" class="message-body">
                                 <div class="columns is-2 is-flex is-justify-content-space-between">
                                     <div class="column">
-                                        <h4>{{ fruta }}</h4>
+                                        <h4>{{ elemento }}</h4>
                                     </div>
                                     <div class="column">
                                         <button class="button is-small is-danger is-justify-content-end"
-                                            @click="removeFruta(idx)">
+                                            @click="removeElemento(idx)">
                                             Remover
                                         </button>
                                     </div>
@@ -76,7 +76,7 @@
                 </div>
                 <div class="column is-3">
                     <div class="subtitle is-5">
-                        Total de elementos: {{ total_frutas }}
+                        Total de elementos: {{ total_elementos }}
                     </div>
                 </div>
             </div>
@@ -97,16 +97,16 @@ import TextoEncabezado from '../Global/TextoEncabezado.vue';
 
 const numero_a = ref(0);
 const numero_b = ref(0);
-const fruta = ref(""); 
-const frutas = ref([]);
+const elemento = ref(""); 
+const elementos = ref([]);
 
-function addFruta() {
-    frutas.value.push(fruta.value);
-    fruta.value = "";
+function addElemento() {
+    elementos.value.push(elemento.value);
+    elemento.value = "";
 }
 
-function removeFruta(idx) {
-    frutas.value.splice(idx, 1);
+function removeElemento(idx) {
+    elementos.value.splice(idx, 1);
 }
 
 const resultadoSuma = computed(() => numero_a.value + numero_b.value);
@@ -127,7 +127,7 @@ const resultadoDivision2 = computed(() => {
     return resultado;
 });
 
-const total_frutas = computed(() => frutas.value.length);
+const total_elementos = computed(() => elementos.value.length);
  
 </script>
 

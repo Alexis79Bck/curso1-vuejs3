@@ -70,34 +70,34 @@
               <div class="control">
                 <input
                   class="input is-primary"
-                  v-model="fruta"
+                  v-model="elemento"
                   type="text"
-                  placeholder="Ingresa una fruta:"
+                  placeholder="Ingresa un texto:"
                 />
               </div>
               <div class="control">
-                <button class="button is-link" @click="addFruta">Añadir</button>
+                <button class="button is-link" @click="addElemento">Añadir</button>
               </div>
             </div>
           </div>
           <div class="column is-3">
             <div class="content">
-              <p class="subtitle is-3">Listado de Frutas:</p>
+              <p class="subtitle is-3">Listado de Elementos:</p>
               <div
                 v-if="frutas.length > 0"
                 class="block is-small message is-link"
               >
-                <div v-for="(fruta, idx) in frutas" class="message-body">
+                <div v-for="(elemento, idx) in elementos" class="message-body">
                   <div
                     class="columns is-2 is-flex is-justify-content-space-between"
                   >
                     <div class="column">
-                      <h4>{{ fruta }}</h4>
+                      <h4>{{ elemento }}</h4>
                     </div>
                     <div class="column">
                       <button
                         class="button is-small is-danger is-justify-content-end"
-                        @click="removeFruta(idx)"
+                        @click="removeElemento(idx)"
                       >
                         Remover
                       </button>
@@ -109,7 +109,7 @@
           </div>
           <div class="column is-3">
             <div class="subtitle is-5">
-              Total de elementos: {{ total_frutas }}
+              Total de elementos: {{ total_elementos }}
             </div>
           </div>
         </div>
@@ -155,19 +155,19 @@
             mensaje: "Propiedades Calculadas",
             numero_a: 0,
             numero_b: 0,
-            fruta: "",
-            idxFruta: null,
-            frutas: [],
+            elemento: "",
+            idxElemento: null,
+            elementos: [],
           };
         },
 
         methods: {
-          addFruta() {
-            this.frutas.push(this.fruta);
-            this.fruta = "";
+          addElemento() {
+            this.elementos.push(this.elemento);
+            this.elemento = "";
           },
-          removeFruta(idx) {
-            this.frutas.splice(idx, 1);
+          removeElemento(idx) {
+            this.elementos.splice(idx, 1);
           },
         },
 
@@ -192,8 +192,8 @@
                 : this.resultadoProducto / this.resultadoSuma;
             return resultado;
           },
-          total_frutas: function () {
-            return this.frutas.length;
+          total_elementos: function () {
+            return this.elementos.length;
           },
         },
       };
