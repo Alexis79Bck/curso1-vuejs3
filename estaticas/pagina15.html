@@ -45,19 +45,19 @@
           </div>
         </div>
 
-        <p class="subtitle is-3">
+        <p class="subtitle is-5">
           La suma de los numeros es : {{ numero_a}} + {{ numero_b }} = {{
           resultadoSuma }}
         </p>
-        <p class="subtitle is-3">
+        <p class="subtitle is-5">
           El producto de los numeros es : {{ numero_a}} * {{ numero_b }} = {{
           resultadoProducto }}
         </p>
-        <p class="subtitle is-3">
+        <p class="subtitle is-5">
           La división de la suma entre el producto es : {{ resultadoSuma }} / {{
           resultadoProducto }} = {{ resultadoDivision }}
         </p>
-        <p class="subtitle is-3">
+        <p class="subtitle is-5">
           La división del producto entre la suma es {{ resultadoProducto }} / {{
           resultadoSuma }} = {{ resultadoDivision2 }}
         </p>
@@ -82,9 +82,9 @@
           </div>
           <div class="column is-3">
             <div class="content">
-              <p class="subtitle is-3">Listado de Elementos:</p>
+              <p class="subtitle is-5">Listado de Elementos:</p>
               <div
-                v-if="frutas.length > 0"
+                v-if="elementos.length > 0"
                 class="block is-small message is-link"
               >
                 <div v-for="(elemento, idx) in elementos" class="message-body">
