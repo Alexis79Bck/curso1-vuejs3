@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 16 - Lifecycle o Ciclo de Vida de Vue</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      .sombra-box {
+        border: solid 1px black;
+        box-shadow: 7px 7px 12px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container">
+      <div class="title is-2 has-text-centered">{{ mensaje }}</div>
+
+      <div class="box sombra-box">
+        <p class="subtitle is-5">
+          Cada instancia de componente Vue pasa por una serie de pasos de
+          inicialización cuando se crea; por ejemplo, necesita configurar la
+          observación de datos, compilar la plantilla, montar la instancia en el
+          DOM y actualizar el DOM cuando cambian los datos.
+        </p>
+        <p class="subtitle is-5">
+          Existen 8 hooks o ganchos dando a los usuarios la oportunidad de 
+          añadir su propio código en etapas específicas del ciclo de vida. Los hooks son:
+          <ul class="ml-5 mb-4">
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeCreate,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <img src="images/beforeCreate_loading.gif" width=64 height=64>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">created,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeCreated }}</div>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeMount,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeBeforeMount }}</div>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">mounted,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeMounted }}</div>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeUpdate,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeBeforeUpdate }}</div>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">updated,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeUpdated }}</div>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeUnmount,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeBeforeUnmount }}</div>
+                </div>
+            </li>
+            <li>
+                <em class="is-family-monospace  has-text-info has-text-weight-semibold">unmounted,</em>
+                <div class="container is-flex is-justify-content-center my-4">  
+                    <div class="title is-4 has-text-secondary">{{ mensajeUnmounted }}</div>
+                </div>
+            </li>
+          </ul>
+        </p>
+         
+        <div class="container is-flex is-justify-content-center my-4">  
+            <img :src="'images/' + imageFileName" width=633 height=1001>
+        </div>
+        <p class="subtitle is-5">
+          Siendo los más utilizados
+          <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">created,</em>
+          <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">mounted,</em>
+          <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">updated</em>
+          y <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">unmounted.</em>
+        </p>
+        <p class="subtitle is-5">
+          Al llamar a <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">mounted</em>, 
+          Vue asocia automáticamente la función callback registrada con 
+          la instancia del componente activo actual. Esto requiere que estos hooks o ganchos se registren de 
+          forma sincrónica durante la configuración del componente.
+        </p>
+        
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Compiled and minified JavaScript -->
+
+    <script>
+      /**********************************************************************
+       * Ciclo de vida de Vue o Lifecycle hooks.
+       * Video 16 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=7JbRZtiuiu4
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "VUE - Ciclo de Vida | Lifecycle Hooks",
+            imageFileName: "vue_lifecycle.png",
+            mensajeCreated: "",
+            mensajeBeforeMount: "",
+            mensajeMounted: "",
+            mensajeBeforeUpdate: "",
+            mensajeUpdated: "",
+            mensajeBeforeUnmount: "",
+            mensajeUnmounted: "",
+          };
+        },
+
+        beforeCreate() {
+            alert("Este es un texto antes de crear el componente: beforeCreate");
+            console.log("Este es un texto antes de crear el componente: beforeCreate");
+        },
+
+        created() {            
+            alert("Este es un texto despues de crearse el componente: created");
+            console.log("Este es un texto despues de crearse el componente: created");
+            this.mensajeCreated = "Este es un texto despues de crearse el componente: created";
+        },
+
+        beforeMount() {
+            alert("Este es un texto antes de montarse el componente: beforeMount");
+            console.log("Este es un texto antes de montarse el componente: beforeMount");
+            this.mensajeBeforeMount = "Este es un texto antes de montarse el componente: beforeMount";
+        },
+
+        mounted() {
+            alert("Este es un texto despues de montarse el componente: mounted");
+            console.log("Este es un texto despues de montarse el componente: mounted");
+            this.mensajeMounted = "Este es un texto despues de montarse el componente: mounted";
+        },
+
+        beforeUpdate() {
+            alert("Este es un texto antes de actualizarse el componente: beforeUpdate");
+            console.log("Este es un texto antes de actualizarse el componente: beforeUpdate");
+            this.mensajeBeforeUpdate = "Este es un texto antes de actualizarse el componente: beforeUpdate";
+        },
+
+        updated() {
+            alert("Este es un texto despues de actualizarse el componente: updated");
+            console.log("Este es un texto despues de actualizarse el componente: updated");
+            this.mensajeUpdated = "Este es un texto despues de actualizarse el componente: updated";
+        },
+        beforeUnmount() {
+            alert("Este es un texto antes de desmontarse el componente: beforeUnmount");
+            console.log("Este es un texto antes de desmontarse el componente: beforeUnmount");
+            this.mensajeBeforeUnmount = "Este es un texto antes de desmontarse el componente: beforeUnmount";
+        },
+
+        unmounted() {
+            alert("Este es un texto despues de desmontarse el componente: unmounted");
+            console.log("Este es un texto despues de desmontarse el componente: unmounted");
+            this.mensajeUnmounted = "Este es un texto despues de desmontarse el componente: unmounted";
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>
