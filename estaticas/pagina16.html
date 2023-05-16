@@ -18,7 +18,7 @@
     </style>
   </head>
   <body>
-    <div id="app" class="container">
+    <div id="app" class="container mb-6">
       <div class="title is-2 has-text-centered">{{ mensaje }}</div>
 
       <div class="box sombra-box">
@@ -29,77 +29,137 @@
           DOM y actualizar el DOM cuando cambian los datos.
         </p>
         <p class="subtitle is-5">
-          Existen 8 hooks o ganchos dando a los usuarios la oportunidad de 
-          añadir su propio código en etapas específicas del ciclo de vida. Los hooks son:
-          <ul class="ml-5 mb-4">
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeCreate,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <img src="images/beforeCreate_loading.gif" width=64 height=64>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">created,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeCreated }}</div>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeMount,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeBeforeMount }}</div>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">mounted,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeMounted }}</div>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeUpdate,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeBeforeUpdate }}</div>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">updated,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeUpdated }}</div>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">beforeUnmount,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeBeforeUnmount }}</div>
-                </div>
-            </li>
-            <li>
-                <em class="is-family-monospace  has-text-info has-text-weight-semibold">unmounted,</em>
-                <div class="container is-flex is-justify-content-center my-4">  
-                    <div class="title is-4 has-text-secondary">{{ mensajeUnmounted }}</div>
-                </div>
-            </li>
-          </ul>
+          Existen 8 hooks o ganchos dando a los usuarios la oportunidad de
+          añadir su propio código en etapas específicas del ciclo de vida. Los
+          hooks son:
+          <em
+            class="is-family-monospace has-text-danger has-text-weight-semibold"
+            >onBeforeCreate, created,
+          </em>
+          <em class="is-family-monospace has-text-info has-text-weight-semibold"
+            >beforeMount, mounted, beforeUpdate, updated,
+          </em>
+          <em class="is-family-monospace has-text-link has-text-weight-semibold"
+            >beforeUnmount y unmounted</em
+          >
         </p>
-         
-        <div class="container is-flex is-justify-content-center my-4">  
-            <img :src="'images/' + imageFileName" width=633 height=1001>
+        <p class="subtitle is-5">
+          Hay que tener en cuenta y con total consideración lo siguiente para
+          cada momento del ciclo de vida: <br />
+          - Los hooks
+          <em
+            class="is-family-monospace has-text-danger has-text-weight-semibold"
+            >onBeforeCreate y onCreated,</em
+          >
+          es cuando se esta instanciando el componente pero sin tener acceso al
+          DOM.<br />
+          - Los hooks
+          <em class="is-family-monospace has-text-info has-text-weight-semibold"
+            >onBeforeMount, onMounted, onBeforeUpdate, onUpdated</em
+          >
+          es cuando el componente ya está instanciado, podemos tener acceso al
+          DOM y manipular los metodos y propiedades asociados a él.<br />
+          - Los hooks
+          <em class="is-family-monospace has-text-link has-text-weight-semibold"
+            >onBeforeUnmount y onUnmounted,</em
+          >
+          es cuando se requiere realizar cualquien función o acción antes o
+          despues de la desmontaje o destrucción del componente.<br />
+        </p>
+        <div class="container is-flex is-justify-content-center my-4">
+          <img src="images/vue_lifecycle.png" width="633" height="1001" />
         </div>
         <p class="subtitle is-5">
           Siendo los más utilizados
-          <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">created,</em>
-          <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">mounted,</em>
-          <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">updated</em>
-          y <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">unmounted.</em>
+          <em
+            class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold"
+            >created,</em
+          >
+          <em
+            class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold"
+            >mounted,</em
+          >
+          y
+          <em
+            class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold"
+            >updated.</em
+          >
         </p>
-        <p class="subtitle is-5">
-          Al llamar a <em class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold">mounted</em>, 
-          Vue asocia automáticamente la función callback registrada con 
-          la instancia del componente activo actual. Esto requiere que estos hooks o ganchos se registren de 
-          forma sincrónica durante la configuración del componente.
-        </p>
-        
+      </div>
+
+      <div class="box sombra-box">
+        <div class="title is-2 has-text-centered">CRUD DE LIBROS</div>
+        <div class="subtitle is-6 has-text-centered">Presione Ctrl + i, para ver la consola de Depuración</div>
+        <div class="field">
+          <div class="columns">
+            <div class="column">
+              <span>Título:</span>
+              <input
+                class="input is-primary is-small"
+                type="text"
+                v-model="titulo"
+              />
+            </div>
+            <div class="column">
+              <span>Autor:</span>
+              <input
+                class="input is-primary is-small"
+                type="text"
+                v-model="autor"
+              />
+            </div>
+            <div class="column">
+              <button
+                class="button is-small is-link is-outlined"
+                @click="agregarLibro()"
+              >
+                Agregar libro
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="content is-flex is-justify-content-center" v-if="cargando">
+          <img src="images/beforeCreate_loading.gif" width="128" height="128" />
+        </div>
+        <div class="content" v-else>
+          <div class="columns">
+            <div class="column">
+              <div v-if="notificacion" class="notification is-info">
+                {{ notificacion }}
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li v-for="(libro, idx) in libros" :key="idx">
+              <div class="notification is-light">
+                <div class="columns">
+                  <div class="column">
+                    <span>{{ libro.titulo }}</span>
+                  </div>
+                  <div class="column">
+                    <span>{{ libro.autor }}</span>
+                  </div>
+                  <div class="column is-2">
+                    <button
+                      class="button is-small is-primary"
+                      @click="editarLibro(idx)"
+                    >
+                      Editar
+                    </button>
+                  </div>
+                  <div class="column is-2">
+                    <button
+                      class="button is-small is-danger"
+                      @click="eliminarLibro(idx)"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
 
@@ -110,7 +170,7 @@
       /**********************************************************************
        * Ciclo de vida de Vue o Lifecycle hooks.
        * Video 16 del curso de VueJs 3 del canal Code Stack.
-       * Link: https://www.youtube.com/watch?v=7JbRZtiuiu4
+       * Link: https://www.youtube.com/watch?v=1WSnbmHJ5Ik
        *
        * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
        * la ultima versión estable de desarrollo de VueJs 3.
@@ -124,7 +184,6 @@
         data() {
           return {
             mensaje: "VUE - Ciclo de Vida | Lifecycle Hooks",
-            imageFileName: "vue_lifecycle.png",
             mensajeCreated: "",
             mensajeBeforeMount: "",
             mensajeMounted: "",
@@ -132,53 +191,131 @@
             mensajeUpdated: "",
             mensajeBeforeUnmount: "",
             mensajeUnmounted: "",
+            libros: [],
+            titulo: "",
+            autor: "",
+            libroEditado: null,
+            cargando: false,
+            notificacion: "",
           };
         },
 
         beforeCreate() {
-            alert("Este es un texto antes de crear el componente: beforeCreate");
-            console.log("Este es un texto antes de crear el componente: beforeCreate");
+          console.log(
+            "Este es un texto antes de crear el componente: beforeCreate"
+          );
         },
 
-        created() {            
-            alert("Este es un texto despues de crearse el componente: created");
-            console.log("Este es un texto despues de crearse el componente: created");
-            this.mensajeCreated = "Este es un texto despues de crearse el componente: created";
+        created() {
+          console.log(
+            "Este es un texto despues de crearse el componente: created"
+          );
+          this.mensajeCreated =
+            "Este es un texto despues de crearse el componente: created";
         },
 
         beforeMount() {
-            alert("Este es un texto antes de montarse el componente: beforeMount");
-            console.log("Este es un texto antes de montarse el componente: beforeMount");
-            this.mensajeBeforeMount = "Este es un texto antes de montarse el componente: beforeMount";
+          this.obtenerLibros();
+          console.log(
+            "Este es un texto antes de montarse el componente: beforeMount"
+          );
+          this.mensajeBeforeMount =
+            "Este es un texto antes de montarse el componente: beforeMount";
         },
 
         mounted() {
-            alert("Este es un texto despues de montarse el componente: mounted");
-            console.log("Este es un texto despues de montarse el componente: mounted");
-            this.mensajeMounted = "Este es un texto despues de montarse el componente: mounted";
+          console.log(
+            "Este es un texto despues de montarse el componente: mounted"
+          );
+          this.mensajeMounted =
+            "Este es un texto despues de montarse el componente: mounted";
         },
 
         beforeUpdate() {
-            alert("Este es un texto antes de actualizarse el componente: beforeUpdate");
-            console.log("Este es un texto antes de actualizarse el componente: beforeUpdate");
-            this.mensajeBeforeUpdate = "Este es un texto antes de actualizarse el componente: beforeUpdate";
+          console.log(
+            "Este es un texto antes de actualizarse el componente: beforeUpdate"
+          );
+          this.mensajeBeforeUpdate =
+            "Este es un texto antes de actualizarse el componente: beforeUpdate";
         },
 
         updated() {
-            alert("Este es un texto despues de actualizarse el componente: updated");
-            console.log("Este es un texto despues de actualizarse el componente: updated");
-            this.mensajeUpdated = "Este es un texto despues de actualizarse el componente: updated";
+          console.log(
+            "Este es un texto despues de actualizarse el componente: updated"
+          );
+          this.mensajeUpdated =
+            "Este es un texto despues de actualizarse el componente: updated";
         },
         beforeUnmount() {
-            alert("Este es un texto antes de desmontarse el componente: beforeUnmount");
-            console.log("Este es un texto antes de desmontarse el componente: beforeUnmount");
-            this.mensajeBeforeUnmount = "Este es un texto antes de desmontarse el componente: beforeUnmount";
+          console.log(
+            "Este es un texto antes de desmontarse el componente: beforeUnmount"
+          );
+          this.mensajeBeforeUnmount =
+            "Este es un texto antes de desmontarse el componente: beforeUnmount";
         },
 
         unmounted() {
-            alert("Este es un texto despues de desmontarse el componente: unmounted");
-            console.log("Este es un texto despues de desmontarse el componente: unmounted");
-            this.mensajeUnmounted = "Este es un texto despues de desmontarse el componente: unmounted";
+          console.log(
+            "No puede existir este texto despues de desmontarse el componente: unmounted"
+          );
+          this.mensajeUnmounted =
+            "No puede existir este texto despues de desmontarse el componente: unmounted";
+        },
+
+        methods: {
+          obtenerLibros() {
+            this.cargando = true;
+            // Simulación de una llamada a la API con un retraso de 2 segundos
+            setTimeout(() => {
+              this.libros = [
+                { titulo: "El principito", autor: "Antoine de Saint-Exupéry" },
+                {
+                  titulo: "Cien años de soledad",
+                  autor: "Gabriel García Márquez",
+                },
+                { titulo: "El gran Gatsby", autor: "F. Scott Fitzgerald" },
+              ];
+              this.cargando = false;
+            }, 2000);
+          },
+          agregarLibro() {
+            if (this.titulo.trim() === "" || this.autor.trim() === "") {
+              this.notificacion = "Por favor, ingrese un título y un autor";
+              setTimeout(() => {
+                this.notificacion = "";
+              }, 2000);
+              return;
+            }
+            this.notificacion = "";
+            if (this.libroEditado === null) {
+              this.libros.push({ titulo: this.titulo, autor: this.autor });
+              this.notificacion = "Libro agregado correctamente";
+            } else {
+              this.libros[this.libroEditado] = {
+                titulo: this.titulo,
+                autor: this.autor,
+              };
+              this.notificacion = "Libro editado correctamente";
+              this.libroEditado = null;
+            }
+            this.titulo = "";
+            this.autor = "";
+            setTimeout(() => {
+              this.notificacion = "";
+            }, 3000);
+          },
+          editarLibro(index) {
+            this.libroEditado = index;
+            this.titulo = this.libros[index].titulo;
+            this.autor = this.libros[index].autor;
+          },
+          eliminarLibro(index) {
+            this.libros.splice(index, 1);
+            this.notificacion = "Libro eliminado correctamente";
+            setTimeout(() => {
+              this.notificacion = "";
+            }, 3000);
+          },
         },
       };
 

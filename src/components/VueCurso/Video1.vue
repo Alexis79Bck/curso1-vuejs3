@@ -7,21 +7,7 @@
 * Este componente es una adaptacion del ejercicio del video 1, basado en
 * en composicion de VueJs 3 + Vite
 ***********************************************************************/ 
--->
-
-<script setup>
-import { ref } from 'vue';
-import TextoEncabezado from '../Global/TextoEncabezado.vue';
-import NotaTexto from '../Global/NotaTexto.vue';
-
-const texto = ref("Hola Mundo !!!");
-const nombre = ref("Alexis Mata");
-const edad = ref(44);
-const profesion = ref("Desarrollador");
-const fechaCreacion = ref("24-04-2023")
-const fechaActual = Date('d-m-Y');
-
-</script>
+--> 
 
 <template>
     <div>
@@ -40,4 +26,18 @@ const fechaActual = Date('d-m-Y');
         </div>
     </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+import TextoEncabezado from '../Global/TextoEncabezado.vue';
+import NotaTexto from '../Global/NotaTexto.vue';
+
+const texto = ref("Hola Mundo !!!");
+const nombre = ref("Alexis Mata");
+const edad = ref(44);
+const profesion = ref("Desarrollador");
+const fechaCreacion = ref("24-04-2023")
+const fechaActual = Date('d-m-Y');
+
+</script>
 
