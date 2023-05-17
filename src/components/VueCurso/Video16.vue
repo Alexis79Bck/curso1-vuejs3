@@ -3,10 +3,6 @@
 * Ciclo de Vida de Vue o Lifecycle hooks .
 * Video 16 del curso de VueJs 3 del canal Code Stack.
 * Link: https://www.youtube.com/watch?v=1WSnbmHJ5Ik
-*
-* Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
-* la ultima versión estable de desarrollo de VueJs 3.
-* Solo para manera educativa.
 ***********************************************************************/
 -->
 

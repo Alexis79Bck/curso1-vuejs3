@@ -18,6 +18,7 @@ import Video11 from './components/VueCurso/Video11.vue';
 import Video12_13 from './components/VueCurso/Video12_13.vue';
 import Video15 from './components/VueCurso/Video15.vue';
 import Video16 from './components/VueCurso/Video16.vue';
+import Video17 from './components/VueCurso/Video17.vue';
 /**
  * Inicialización de variable:
  *  - componente: identificar y mostrar el componente seleccionado.
@@ -38,6 +39,7 @@ const botones = ref([
   { nombre: 'video12_13', etiqueta: 'Ejercicios 12 y 13' },
   { nombre: 'video15', etiqueta: 'Ejercicio 15' },
   { nombre: 'video16', etiqueta: 'Ejercicio 16' },
+  { nombre: 'video17', etiqueta: 'Ejercicio 17' },
 
 ]);
 
@@ -77,6 +79,8 @@ const componenteSeleccionado = computed(() => {
       return Video15;
     case 'video16':
       return Video16;
+    case 'video17':
+      return Video17;      
     default:
       return null;
   }

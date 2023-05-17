@@ -25,3 +25,4 @@ Cada ejecicio de las Páginas Estaticas, se adaptó en su forma de componente me
 Cada componente se encuentran dentro de `src/components/VueCurso`, claramente identificado. 
 
 
+
