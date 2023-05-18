@@ -2,7 +2,7 @@
 /**********************************************************************
 * Componente Global TextoEncabezado.
 * Este componente presenta una título de encabezado estática al inicio 
-* del componente padre
+* del componente padre (prueba dario)
 ***********************************************************************/ 
 -->
 <template>
