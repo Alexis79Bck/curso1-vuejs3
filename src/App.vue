@@ -69,6 +69,8 @@ const componenteSeleccionado = computed(() => {
       return Video11;
     case 'video12_13':
       return Video12_13;
+       case 'video13_14':
+      return Video13_14;
     default:
       return null;
   }
