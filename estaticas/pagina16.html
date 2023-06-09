@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Video 16 - Lifecycle o Ciclo de Vida de Vue</title>
+    <!-- Compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style>
+      .sombra-box {
+        border: solid 1px black;
+        box-shadow: 7px 7px 12px black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app" class="container mb-6">
+      <div class="title is-2 has-text-centered">{{ mensaje }}</div>
+
+      <div class="box sombra-box">
+        <p class="subtitle is-5">
+          Cada instancia de componente Vue pasa por una serie de pasos de
+          inicialización cuando se crea; por ejemplo, necesita configurar la
+          observación de datos, compilar la plantilla, montar la instancia en el
+          DOM y actualizar el DOM cuando cambian los datos.
+        </p>
+        <p class="subtitle is-5">
+          Existen 8 hooks o ganchos dando a los usuarios la oportunidad de
+          añadir su propio código en etapas específicas del ciclo de vida. Los
+          hooks son:
+          <em
+            class="is-family-monospace has-text-danger has-text-weight-semibold"
+            >onBeforeCreate, created,
+          </em>
+          <em class="is-family-monospace has-text-info has-text-weight-semibold"
+            >beforeMount, mounted, beforeUpdate, updated,
+          </em>
+          <em class="is-family-monospace has-text-link has-text-weight-semibold"
+            >beforeUnmount y unmounted</em
+          >
+        </p>
+        <p class="subtitle is-5">
+          Hay que tener en cuenta y con total consideración lo siguiente para
+          cada momento del ciclo de vida: <br />
+          - Los hooks
+          <em
+            class="is-family-monospace has-text-danger has-text-weight-semibold"
+            >onBeforeCreate y onCreated,</em
+          >
+          es cuando se esta instanciando el componente pero sin tener acceso al
+          DOM.<br />
+          - Los hooks
+          <em class="is-family-monospace has-text-info has-text-weight-semibold"
+            >onBeforeMount, onMounted, onBeforeUpdate, onUpdated</em
+          >
+          es cuando el componente ya está instanciado, podemos tener acceso al
+          DOM y manipular los metodos y propiedades asociados a él.<br />
+          - Los hooks
+          <em class="is-family-monospace has-text-link has-text-weight-semibold"
+            >onBeforeUnmount y onUnmounted,</em
+          >
+          es cuando se requiere realizar cualquien función o acción antes o
+          despues de la desmontaje o destrucción del componente.<br />
+        </p>
+        <div class="container is-flex is-justify-content-center my-4">
+          <img src="images/vue_lifecycle.png" width="633" height="1001" />
+        </div>
+        <p class="subtitle is-5">
+          Siendo los más utilizados
+          <em
+            class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold"
+            >created,</em
+          >
+          <em
+            class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold"
+            >mounted,</em
+          >
+          y
+          <em
+            class="is-family-monospace is-size-6 has-text-info has-text-weight-semibold"
+            >updated.</em
+          >
+        </p>
+      </div>
+
+      <div class="box sombra-box">
+        <div class="title is-2 has-text-centered">CRUD DE LIBROS</div>
+        <div class="subtitle is-6 has-text-centered">Presione Ctrl + i, para ver la consola de Depuración</div>
+        <div class="field">
+          <div class="columns">
+            <div class="column">
+              <span>Título:</span>
+              <input
+                class="input is-primary is-small"
+                type="text"
+                v-model="titulo"
+              />
+            </div>
+            <div class="column">
+              <span>Autor:</span>
+              <input
+                class="input is-primary is-small"
+                type="text"
+                v-model="autor"
+              />
+            </div>
+            <div class="column">
+              <button
+                class="button is-small is-link is-outlined"
+                @click="agregarLibro()"
+              >
+                Agregar libro
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="content is-flex is-justify-content-center" v-if="cargando">
+          <img src="images/beforeCreate_loading.gif" width="128" height="128" />
+        </div>
+        <div class="content" v-else>
+          <div class="columns">
+            <div class="column">
+              <div v-if="notificacion" class="notification is-info">
+                {{ notificacion }}
+              </div>
+            </div>
+          </div>
+          <ul>
+            <li v-for="(libro, idx) in libros" :key="idx">
+              <div class="notification is-light">
+                <div class="columns">
+                  <div class="column">
+                    <span>{{ libro.titulo }}</span>
+                  </div>
+                  <div class="column">
+                    <span>{{ libro.autor }}</span>
+                  </div>
+                  <div class="column is-2">
+                    <button
+                      class="button is-small is-primary"
+                      @click="editarLibro(idx)"
+                    >
+                      Editar
+                    </button>
+                  </div>
+                  <div class="column is-2">
+                    <button
+                      class="button is-small is-danger"
+                      @click="eliminarLibro(idx)"
+                    >
+                      Eliminar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- Compiled and minified JavaScript -->
+
+    <script>
+      /**********************************************************************
+       * Ciclo de vida de Vue o Lifecycle hooks.
+       * Video 16 del curso de VueJs 3 del canal Code Stack.
+       * Link: https://www.youtube.com/watch?v=1WSnbmHJ5Ik
+       *
+       * Se utilizó inicialmente un snippet basico de Html y se agregó el CDN de
+       * la ultima versión estable de desarrollo de VueJs 3.
+       * Solo para manera educativa.
+       ***********************************************************************/
+
+      /*************************************************************************
+       *  Instanciacion de un componente en vuejs.
+       ***************************************************************************/
+      const Componente1 = {
+        data() {
+          return {
+            mensaje: "VUE - Ciclo de Vida | Lifecycle Hooks",
+            mensajeCreated: "",
+            mensajeBeforeMount: "",
+            mensajeMounted: "",
+            mensajeBeforeUpdate: "",
+            mensajeUpdated: "",
+            mensajeBeforeUnmount: "",
+            mensajeUnmounted: "",
+            libros: [],
+            titulo: "",
+            autor: "",
+            libroEditado: null,
+            cargando: false,
+            notificacion: "",
+          };
+        },
+
+        beforeCreate() {
+          console.log(
+            "Este es un texto antes de crear el componente: beforeCreate"
+          );
+        },
+
+        created() {
+          console.log(
+            "Este es un texto despues de crearse el componente: created"
+          );
+          this.mensajeCreated =
+            "Este es un texto despues de crearse el componente: created";
+        },
+
+        beforeMount() {
+          this.obtenerLibros();
+          console.log(
+            "Este es un texto antes de montarse el componente: beforeMount"
+          );
+          this.mensajeBeforeMount =
+            "Este es un texto antes de montarse el componente: beforeMount";
+        },
+
+        mounted() {
+          console.log(
+            "Este es un texto despues de montarse el componente: mounted"
+          );
+          this.mensajeMounted =
+            "Este es un texto despues de montarse el componente: mounted";
+        },
+
+        beforeUpdate() {
+          console.log(
+            "Este es un texto antes de actualizarse el componente: beforeUpdate"
+          );
+          this.mensajeBeforeUpdate =
+            "Este es un texto antes de actualizarse el componente: beforeUpdate";
+        },
+
+        updated() {
+          console.log(
+            "Este es un texto despues de actualizarse el componente: updated"
+          );
+          this.mensajeUpdated =
+            "Este es un texto despues de actualizarse el componente: updated";
+        },
+        beforeUnmount() {
+          console.log(
+            "Este es un texto antes de desmontarse el componente: beforeUnmount"
+          );
+          this.mensajeBeforeUnmount =
+            "Este es un texto antes de desmontarse el componente: beforeUnmount";
+        },
+
+        unmounted() {
+          console.log(
+            "No puede existir este texto despues de desmontarse el componente: unmounted"
+          );
+          this.mensajeUnmounted =
+            "No puede existir este texto despues de desmontarse el componente: unmounted";
+        },
+
+        methods: {
+          obtenerLibros() {
+            this.cargando = true;
+            // Simulación de una llamada a la API con un retraso de 2 segundos
+            setTimeout(() => {
+              this.libros = [
+                { titulo: "El principito", autor: "Antoine de Saint-Exupéry" },
+                {
+                  titulo: "Cien años de soledad",
+                  autor: "Gabriel García Márquez",
+                },
+                { titulo: "El gran Gatsby", autor: "F. Scott Fitzgerald" },
+              ];
+              this.cargando = false;
+            }, 2000);
+          },
+          agregarLibro() {
+            if (this.titulo.trim() === "" || this.autor.trim() === "") {
+              this.notificacion = "Por favor, ingrese un título y un autor";
+              setTimeout(() => {
+                this.notificacion = "";
+              }, 2000);
+              return;
+            }
+            this.notificacion = "";
+            if (this.libroEditado === null) {
+              this.libros.push({ titulo: this.titulo, autor: this.autor });
+              this.notificacion = "Libro agregado correctamente";
+            } else {
+              this.libros[this.libroEditado] = {
+                titulo: this.titulo,
+                autor: this.autor,
+              };
+              this.notificacion = "Libro editado correctamente";
+              this.libroEditado = null;
+            }
+            this.titulo = "";
+            this.autor = "";
+            setTimeout(() => {
+              this.notificacion = "";
+            }, 3000);
+          },
+          editarLibro(index) {
+            this.libroEditado = index;
+            this.titulo = this.libros[index].titulo;
+            this.autor = this.libros[index].autor;
+          },
+          eliminarLibro(index) {
+            this.libros.splice(index, 1);
+            this.notificacion = "Libro eliminado correctamente";
+            setTimeout(() => {
+              this.notificacion = "";
+            }, 3000);
+          },
+        },
+      };
+
+      /*************************************************************************
+       *  Renderizacion o Montaje de un componente en vuejs.
+       ***************************************************************************/
+      const app = Vue.createApp(Componente1).mount("#app");
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  </body>
+</html>

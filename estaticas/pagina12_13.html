@@ -99,6 +99,18 @@
           </div>
         </div>
       </div>
+
+      <div class="container mt-4 box sombra-box">
+        <div class="block subtitle is-5">
+          Para enlazar estilos CSS Inline a un elemento o componente, se utiliza
+          la directiva <code>v-bind:</code> sobre el atributo style.
+        </div>
+        <div class="columns is-flex is-justify-content-center">
+          <div class="column is-2 mx-2">
+            <div class="box" :style="misEstilos"></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -192,6 +204,12 @@
                 clase: "sombra-violeta-box",
               },
             ],
+            misEstilos: {
+              height: "75px",
+              borderRadius: "50px",
+              border: "dashed 3px blue",
+              backgroundColor: "#cdc302",
+            },
           };
         },
 
